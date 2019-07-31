@@ -6,7 +6,7 @@
 <generatorConfiguration>
 
   <!--数据库驱动,最好不要有中文字符,不然会找不到，建议给出驱动的绝对路径-->
-  <classPathEntry location="D:/IdeaPro/GenMybatisProject//lib/mysql-connector-java-5.1.32.jar" />
+  <classPathEntry location="D:/IdeaPro/GenMybatisProject/lib/mysql-connector-java-5.1.32.jar" />
   <!-- <classPathEntry location="D:/workspace/myeclipse_workspae/GeneratorJavaTool/lib/ojdbc6.jar" /> -->
 
   
