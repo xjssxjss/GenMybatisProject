@@ -28,6 +28,7 @@ public class Main {
         boolean overwrite = true;
         //指向逆向工程的配置文件（项目根路径不要有中文，如果有的话建议使用绝对路径）
         File configFile = new File(xmlpath.getPath()+"generatorConfig.xml");
+        System.out.println("加载xml文件路径>>>>>>>>>>>>>>>"+configFile);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         MyBatisGenerator myBatisGenerator = null;
         try {
