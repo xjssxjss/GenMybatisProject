@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+  
+<generatorConfiguration>
+
+  <!--数据库驱动,最好不要有中文字符,不然会找不到，建议给出驱动的绝对路径-->
+  <classPathEntry location="D:/IdeaPro/GenMybatisProject//lib/mysql-connector-java-5.1.32.jar" />
+  <!-- <classPathEntry location="D:/workspace/myeclipse_workspae/GeneratorJavaTool/lib/ojdbc6.jar" /> -->
+
+  
+  <!-- targetRuntime 可选项，可填值为MyBatis3，MyBatis3Simple（默认的），Ibatis2Java2，Ibatis2Java5 -->
+  <context id="testTables" targetRuntime="MyBatis3">
+  
+  		<!-- JavaBean 实现 序列化 接口 -->
+    	<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    
+    	<!-- genenat entity时,生成toString -->
+ 		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+ 	
+  		<!-- 规定代码上面的注释规则 -->  
+    	<commentGenerator>  
+    		<!-- 是否去除自动生成的注释 true：是（关闭注释） ： false:否 （打开注释）-->
+      		<property name="suppressAllComments" value="true" />  
+      		<!-- 是否打开时间标志 true：关闭时间注释 ： false:打开时间注释 -->
+      		<property name="suppressDate" value="true" />  
+    	</commentGenerator> 
+    
+    	<!-- jdbc配置：数据库连接（mysql） -->  
+    	<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        	connectionURL="jdbc:mysql://localhost:3306/spro"
+        	userId="root"
+        	password="root1234">
+    	</jdbcConnection>
+    	<!-- jdbc配置：数据库连接（Oracle） -->  
+    	<!-- <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+        	connectionURL="jdbc:oracle:thin:@localhost:1521:orcl"
+        	userId="oa"
+        	password="oa">
+    	</jdbcConnection> -->
+    
+    	<!-- mybatis里专门用来处理NUMERIC和DECIMAL类型的策略 -->
+    	<javaTypeResolver >
+      		<property name="forceBigDecimals" value="false" />
+    	</javaTypeResolver>
+    
+    	<!-- 实体类生成配置：数据表对应的model 层 （生成po类的位置） --> 
+    	<javaModelGenerator targetPackage="com.sean.model" targetProject=".\src">
+      		<!-- enableSubPackages：是否让schema作为包的后缀 -->
+      		<property name="enableSubPackages" value="false" />
+      		<!-- 从数据库返回的值被清理前后的空格 -->
+      		<property name="trimStrings" value="true" />
+    	</javaModelGenerator>
+    
+    	<!-- 生成sql语句的xml文件：sql mapper 隐射配置文件（映射文件生成的位置） -->
+    	<sqlMapGenerator targetPackage="com.sean.mapper"  targetProject=".\src">
+     	 	<!-- enableSubPackages：是否让schema作为包的后缀 -->
+     	 	<property name="enableSubPackages" value="false" />
+    	</sqlMapGenerator>
+    
+    	<!-- mapper生成配置：在ibatis2 中是dao层，但在mybatis3中，其实就是mapper接口 --> 
+    	<javaClientGenerator type="XMLMAPPER" targetPackage="com.sean.mapper"  targetProject=".\src">
+      		<property name="enableSubPackages" value="false" />
+    	</javaClientGenerator>
+    
+    	<!-- 要对哪些数据表进行生成操作，必须要有一个. -->
+    	<!-- <table tableName="taddress"></table> -->
+    	<table tableName="t_act_detail" domainObjectName="ActDetail" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+   
+  	</context>
+  	
+</generatorConfiguration>
